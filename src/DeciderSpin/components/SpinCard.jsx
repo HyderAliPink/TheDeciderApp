@@ -10,7 +10,7 @@ function SpinCard({ optionList, transformX, isSpinning, onTransitionEnd, cardWid
   const repeatedOptions = Array.from({ length: repeatCount }, () => optionList).flat()
 
   return (
-    <div className='relative max-w-[960px] overflow-hidden rounded-3xl border border-white/10 bg-slate-950/90 p-4 shadow-2xl w-full'>
+    <div className='relative mx-auto max-w-[800px] w-full overflow-hidden rounded-3xl border border-white/10 bg-slate-950/90 p-4 shadow-2xl'>
       <div className='pointer-events-none absolute inset-y-0 left-1/2 z-20 h-full w-px bg-white/30' />
       <div className='overflow-hidden'>
           <div
