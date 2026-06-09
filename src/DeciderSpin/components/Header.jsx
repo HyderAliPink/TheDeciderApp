@@ -5,7 +5,7 @@ export default function Header() {
     <div className="w-screen px-8 py-4  flex justify-between">
       <div className="left-side-heading">
         <h1
-          className="tracking-wider text-black text-4xl"
+          className="tracking-wider text-white text-4xl"
         >
           The Decider
         </h1>
