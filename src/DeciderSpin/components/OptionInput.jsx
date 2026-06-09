@@ -1,63 +1,39 @@
+function OptionInput({ option, setOption, setOptionList, optionList }) {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const trimmed = option.trim()
+    if (!trimmed) return
 
-function OptionInput({option, setOption, setOptionList, optionList}) {
-    const handleSubmit = (e)=> {
-        e.preventDefault();
-        console.log();
-        if (option.trim() === "") {
-            return
-        }
-        setOptionList([...optionList, {id:optionList.length, title:option}])
-        setOption("")
+    setOptionList([
+      ...optionList,
+      {
+        id:
+          typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+            ? crypto.randomUUID()
+            : `${Date.now()}-${Math.random()}`,
+        title: trimmed,
+      },
+    ])
+    setOption('')
+  }
 
-
-    }
   return (
-    
-        <form onSubmit={handleSubmit} className="flex items-center ml-2">
-  <input placeholder='option' value={option} onChange={(e)=>{ 
-      setOption(e.target.value)
-        
-    }
-}
-    type="text"
-    placeholder="option"
-    autoComplete="off"
-    className="
-      min-h-10.5
-      max-w-37.5
-      px-4
-      text-[15px]
-      text-gray-500
-      bg-transparent
-      border
-      border-[#5e4dcd]
-      rounded-l-md
-      outline-none
-      focus:border-[#3898EC]
-    "
-  />
-
-  <button
-  
-    type="submit"
-    
-    className="
-      min-h-10.5
-      px-2
-      py-1
-      text-[15px]
-      text-white
-      bg-[#5e4dcd]
-      rounded-r-md
-      cursor-pointer
-      transition-colors
-      duration-300
-      hover:bg-[#5e5dcd]
-    ">Add
-  </button>
-</form>
-       
-    
+    <form onSubmit={handleSubmit} className="flex flex-wrap items-center gap-3 rounded-3xl bg-white/10 p-4 shadow-lg backdrop-blur-sm sm:flex-nowrap">
+      <input
+        value={option}
+        onChange={(e) => setOption(e.target.value)}
+        type="text"
+        autoComplete="off"
+        placeholder="Add choice"
+        className="min-h-10.5 flex-1 rounded-l-2xl border border-white/10 bg-slate-900/90 px-4 py-3 text-sm text-white outline-none transition focus:border-cyan-400"
+      />
+      <button
+        type="submit"
+        className="min-h-10.5 rounded-2xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-cyan-400"
+      >
+        Add
+      </button>
+    </form>
   )
 }
 
